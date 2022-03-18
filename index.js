@@ -45,7 +45,7 @@ const startScanning = (async () => {
                 log('  TX Power: ' + event.txPower);
                 log('  UUIDs: ' + event.uuids);
                 log(manufacturerData.join('\n'));
-                log(serviceData).join('\n');
+                log(serviceData.join('\n'));
             }
         });
 
@@ -62,9 +62,9 @@ const startScanning = (async () => {
 });
 
 const filterBeacon = ((str) => {
-    return true;
+    //return true;
     //return str.includes(' 00 00 00');
-    //return !!str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
+    return !!str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
 });
 
 const log = ((str) => {
