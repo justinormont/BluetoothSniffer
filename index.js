@@ -37,7 +37,7 @@ const startScanning = (async () => {
             const manufacturerData = event.manufacturerData.map((valueDataView, key) => logDataView('Manufacturer', key, valueDataView));
             const serviceData = event.serviceData.map((valueDataView, key) => logDataView('Service', key, valueDataView));
             
-            if (filter(serviceData.join('\n'))) {
+            if (filter(serviceData.join('\n')) || filter(manufacturerData.join('\n'))) {
                 log('\n\nAdvertisement received.');
                 log('  Device Name: ' + event.device.name);
                 log('  Device ID: ' + event.device.id);
