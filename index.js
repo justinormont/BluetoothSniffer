@@ -37,15 +37,15 @@ const startScanning = (async () => {
             const manufacturerData = event.manufacturerData.map((valueDataView, key) => logDataView('Manufacturer', key, valueDataView));
             const serviceData = event.serviceData.map((valueDataView, key) => logDataView('Service', key, valueDataView));
             
-            if (filter(serviceData)) {
+            if (filter(serviceData.join('\n'))) {
                 log('\n\nAdvertisement received.');
                 log('  Device Name: ' + event.device.name);
                 log('  Device ID: ' + event.device.id);
                 log('  RSSI: ' + event.rssi);
                 log('  TX Power: ' + event.txPower);
                 log('  UUIDs: ' + event.uuids);
-                log(manufacturerData);
-                log(serviceData);
+                log(manufacturerData.join('\n'));
+                log(serviceData).join('\n');
             }
         });
 
