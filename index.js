@@ -34,8 +34,8 @@ const startScanning = (async () => {
         log(' filters: ' + JSON.stringify(scan.filters));
 
         navigator.bluetooth.addEventListener('advertisementreceived', event => {
-            const manufacturerData = event.manufacturerData.map((valueDataView, key) => logDataView('Manufacturer', key, valueDataView));
-            const serviceData = event.serviceData.map((valueDataView, key) => logDataView('Service', key, valueDataView));
+            const manufacturerData = [...event.manufacturerData].map((valueDataView, key) => logDataView('Manufacturer', key, valueDataView));
+            const serviceData = [...event.serviceData].map((valueDataView, key) => logDataView('Service', key, valueDataView));
             
             if (filterBeacon(serviceData.join('\n')) || filterBeacon(manufacturerData.join('\n'))) {
                 log('\n\nAdvertisement received.');
