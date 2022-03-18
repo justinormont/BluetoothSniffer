@@ -37,7 +37,7 @@ const startScanning = (async () => {
             const manufacturerData = event.manufacturerData.map((valueDataView, key) => logDataView('Manufacturer', key, valueDataView));
             const serviceData = event.serviceData.map((valueDataView, key) => logDataView('Service', key, valueDataView));
             
-            if (filter(serviceData.join('\n')) || filter(manufacturerData.join('\n'))) {
+            if (filterBeacon(serviceData.join('\n')) || filterBeacon(manufacturerData.join('\n'))) {
                 log('\n\nAdvertisement received.');
                 log('  Device Name: ' + event.device.name);
                 log('  Device ID: ' + event.device.id);
@@ -61,8 +61,8 @@ const startScanning = (async () => {
     }
 });
 
-const filter = ((str) => {
-    return str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
+const filterBeacon = ((str) => {
+    return !!str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
 });
 
 const log = ((str) => {
