@@ -63,8 +63,8 @@ const startScanning = (async () => {
 
 const filterBeacon = ((str) => {
     //return true;
-    //return str.includes(' 00 00 00');
-    return !!str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
+    return str.includes(' 00 00 00');
+    //return !!str.match(/ 64 [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] [0-9a-f][0-9a-f] 00 00 00/);
 });
 
 const log = ((str) => {
